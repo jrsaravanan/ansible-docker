@@ -1,0 +1,9 @@
+- hosts: web_server
+  become: true
+  gather_facts: false 
+  tasks:
+    - name: echo
+      command: echo 'Hello, World'
+      register: e 
+
+    - debug: var=e.stdout_lines

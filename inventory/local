@@ -1,0 +1,3 @@
+[web_server]
+ansible_test_host ansible_connection=docker 
+
