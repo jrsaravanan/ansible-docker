@@ -1,0 +1,25 @@
+---
+# tasks file for tomcate-role
+- name: echo
+  command: echo 'Hello, World'
+  register: ec
+  
+- debug: var=ec.stdout_lines
+
+- name: date
+  command: date
+  register: dt
+
+- debug: var=dt.stdout_lines
+
+- name: install Apache HTTP Server 
+  apt: name=apache2 update_cache=yes state=latest
+
+- name: enable mod rewrite
+  apache2_module: name=rewrite state=present
+  notify:
+    - restart apache2  
+
+
+
+
